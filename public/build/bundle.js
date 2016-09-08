@@ -56,11 +56,7 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _pollsJSON = __webpack_require__(235);
-
-	var _pollsJSON2 = _interopRequireDefault(_pollsJSON);
-
-	var _Nav = __webpack_require__(236);
+	var _Nav = __webpack_require__(235);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -68,7 +64,7 @@
 
 	var _NewPoll2 = _interopRequireDefault(_NewPoll);
 
-	var _Polls = __webpack_require__(237);
+	var _Polls = __webpack_require__(236);
 
 	var _Polls2 = _interopRequireDefault(_Polls);
 
@@ -77,19 +73,12 @@
 	var App = _react2.default.createClass({
 	  displayName: 'App',
 
-	  setInitialState: function setInitialState() {
-	    return {
-	      votingPolls: []
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
-	    this.setState({ votingPolls: _pollsJSON2.default });
-	  },
+
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement(_Nav2.default, { polls: this.state.votingPolls }),
+	      _react2.default.createElement(_Nav2.default, null),
 	      this.props.children
 	    );
 	  }
@@ -27130,61 +27119,6 @@
 
 /***/ },
 /* 235 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var mypolls = [{
-	  "id": 1,
-	  "createdBy": "CThePants",
-	  "pollname": "Animals",
-	  "options": [{
-	    "option": "Bird",
-	    "votes": 3
-	  }, {
-	    "option": "Dog",
-	    "votes": 7
-	  }, {
-	    "option": "Cat",
-	    "votes": 10
-	  }]
-	}, {
-	  "id": 2,
-	  "createdBy": "CThePants",
-	  "pollname": "Cars",
-	  "options": [{
-	    "option": "Truck",
-	    "votes": 4
-	  }, {
-	    "option": "Sedan",
-	    "votes": 8
-	  }, {
-	    "option": "SUV",
-	    "votes": 11
-	  }]
-	}, {
-	  "id": 3,
-	  "createdBy": "CThePants",
-	  "pollname": "Aircraft",
-	  "options": [{
-	    "option": "Planes",
-	    "votes": 2
-	  }, {
-	    "option": "Rocket",
-	    "votes": 6
-	  }, {
-	    "option": "Helicopter",
-	    "votes": 14
-	  }]
-	}];
-
-	exports.default = mypolls;
-
-/***/ },
-/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27199,7 +27133,7 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _Polls = __webpack_require__(237);
+	var _Polls = __webpack_require__(236);
 
 	var _Polls2 = _interopRequireDefault(_Polls);
 
@@ -27296,7 +27230,7 @@
 	exports.default = Nav;
 
 /***/ },
-/* 237 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27309,19 +27243,31 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Poll = __webpack_require__(238);
+	var _Poll = __webpack_require__(237);
 
 	var _Poll2 = _interopRequireDefault(_Poll);
+
+	var _pollsJSON = __webpack_require__(238);
+
+	var _pollsJSON2 = _interopRequireDefault(_pollsJSON);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Polls = _react2.default.createClass({
 	    displayName: 'Polls',
 
+	    setInitialState: function setInitialState() {
+	        return {
+	            votingPolls: []
+	        };
+	    },
+	    componentWillMount: function componentWillMount() {
+	        this.setState({ votingPolls: _pollsJSON2.default });
+	    },
 	    render: function render() {
 
-	        if (this.props.polls) {
-	            var pollsResult = this.props.polls.map(function (poll) {
+	        if (this.state.votingPolls) {
+	            var pollsResult = this.state.votingPolls.map(function (poll) {
 	                return _react2.default.createElement(_Poll2.default, { pollname: poll.pollname, key: poll.id });
 	            });
 	        }
@@ -27347,7 +27293,7 @@
 	exports.default = Polls;
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27375,6 +27321,61 @@
 	});
 
 	exports.default = Poll;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var mypolls = [{
+	  "id": 1,
+	  "createdBy": "CThePants",
+	  "pollname": "Animals",
+	  "options": [{
+	    "option": "Bird",
+	    "votes": 3
+	  }, {
+	    "option": "Dog",
+	    "votes": 7
+	  }, {
+	    "option": "Cat",
+	    "votes": 10
+	  }]
+	}, {
+	  "id": 2,
+	  "createdBy": "CThePants",
+	  "pollname": "Cars",
+	  "options": [{
+	    "option": "Truck",
+	    "votes": 4
+	  }, {
+	    "option": "Sedan",
+	    "votes": 8
+	  }, {
+	    "option": "SUV",
+	    "votes": 11
+	  }]
+	}, {
+	  "id": 3,
+	  "createdBy": "CThePants",
+	  "pollname": "Aircraft",
+	  "options": [{
+	    "option": "Planes",
+	    "votes": 2
+	  }, {
+	    "option": "Rocket",
+	    "votes": 6
+	  }, {
+	    "option": "Helicopter",
+	    "votes": 14
+	  }]
+	}];
+
+	exports.default = mypolls;
 
 /***/ },
 /* 239 */
