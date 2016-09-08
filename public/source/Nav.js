@@ -1,6 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router';
 import Polls from './Polls.js'; 
-
 
 var Nav = React.createClass({
     render: function(){
@@ -21,15 +21,15 @@ var Nav = React.createClass({
                                 <li className="navlinks"><a href="/">FCC Voting App</a></li>
                             </ul>
                             <ul className="nav navbar-nav navbar navbar-right">
-                                <li className="navlinks"><a href="/">Home</a></li>
-                                <li className="navlinks"><a href="#mypolls">My Polls</a></li>
-                                <li className="navlinks"><a href="#newpoll">New Poll</a></li>
-                                <li className="navlinks"><a href="#login">Login/Logout</a></li>
+                                <li className="navlinks"><Link to="/">Home</Link></li>
+                                <li className="navlinks"><Link to="/mypolls">My Polls</Link></li>
+                                <li className="navlinks"><Link to="/newpoll">New Poll</Link></li>
+                                <li className="navlinks"><Link to="/login">Login/Logout</Link></li>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <Polls polls={this.props.polls} />
+               
             </div>
         );
     }
