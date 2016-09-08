@@ -1,11 +1,20 @@
 import React from 'react';
 import Poll from './Poll.js';
+import mypolls from './pollsJSON.js';
 
 var Polls = React.createClass({
+    setInitialState: function(){
+        return {
+            votingPolls: []
+        };
+    },
+    componentWillMount: function(){
+        this.setState({votingPolls: mypolls});
+    },
     render: function(){
         
-        if (this.props.polls){
-            var pollsResult = this.props.polls.map((poll) => {
+        if (this.state.votingPolls){
+            var pollsResult = this.state.votingPolls.map((poll) => {
                 return <Poll pollname={poll.pollname} key={poll.id} />;
             });
         }
