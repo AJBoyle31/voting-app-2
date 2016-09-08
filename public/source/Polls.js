@@ -12,6 +12,8 @@ var Polls = React.createClass({
        
         return (
             <div id="polls">
+                <h2 id="pageTitle">FCC Voting App</h2>
+                <h4 id="pageDesc">Select a poll to see the results and vote!</h4>
                 {pollsResult}
             </div>
         );
