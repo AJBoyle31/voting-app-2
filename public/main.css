@@ -27,8 +27,27 @@ nav {
 #pageDesc {
   margin-bottom: 50px; }
 
-#test {
-  color: green;
-  margin-top: 100px; }
+#newPollPage {
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  width: 75%;
+  border: 2px solid black;
+  padding: 10px 10px; }
+
+#title {
+  width: 75%; }
+
+#options {
+  width: 75%; }
+
+.formInputs {
+  width: 75%;
+  margin-top: 25px; }
+
+#newPollButton {
+  margin-top: 15px;
+  font-size: 125%; }
 
 /*# sourceMappingURL=main.css.map */

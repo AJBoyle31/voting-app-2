@@ -86,7 +86,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
-	  { history: _reactRouter.hashHistory },
+	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: App },
@@ -27396,11 +27396,46 @@
 	var NewPoll = _react2.default.createClass({
 	    displayName: "NewPoll",
 
+	    handleSubmit: function handleSubmit(event) {
+	        var title = event.target.title.value;
+	        var options = event.target.options.value;
+	        alert(options);
+	        event.preventDefault();
+	    },
 	    render: function render() {
 	        return _react2.default.createElement(
-	            "h5",
-	            { id: "test" },
-	            "testing"
+	            "div",
+	            { id: "newPollPage" },
+	            _react2.default.createElement(
+	                "h2",
+	                null,
+	                "Make a New Poll!"
+	            ),
+	            _react2.default.createElement(
+	                "form",
+	                { id: "newPollForm", onSubmit: this.handleSubmit },
+	                _react2.default.createElement(
+	                    "label",
+	                    { className: "formInputs" },
+	                    "Title:",
+	                    _react2.default.createElement("br", null),
+	                    _react2.default.createElement("input", { type: "text", name: "title", id: "title", required: true })
+	                ),
+	                _react2.default.createElement("br", null),
+	                _react2.default.createElement(
+	                    "label",
+	                    { className: "formInputs" },
+	                    "Options (seperated by line):",
+	                    _react2.default.createElement("br", null),
+	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", form: "newpoll", required: true })
+	                ),
+	                _react2.default.createElement("br", null),
+	                _react2.default.createElement(
+	                    "button",
+	                    { type: "submit", id: "newPollButton" },
+	                    "Make my poll!"
+	                )
+	            )
 	        );
 	    }
 	});

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import Nav from './Nav.js';
 import NewPoll from './NewPoll.js';
 import Polls from './Polls.js';
@@ -22,7 +22,7 @@ var App = React.createClass({
  
  
 ReactDOM.render((
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Polls}/>
       <Route path="newpoll" component={NewPoll} />
