@@ -7,10 +7,13 @@ var NewPoll = React.createClass({
             pollOptions: ""
         };    
     },
+    componentWillMount: function(){
+      this.setState({pollOptions: ""});  
+    },
     handleTitleChange: function(event){
         this.setState({pollTitle: event.target.value});    
     },
-    handleOptionChange: function(){
+    handleOptionChange: function(event){
         this.setState({pollOptions: event.target.value});
     },
     handleSubmit: function(event){
@@ -29,7 +32,7 @@ var NewPoll = React.createClass({
                     <br/>
                     <label className="formInputs">Options (seperated by line):
                     <br/>
-                        <textarea type="text" name="options" id="options" form="newpoll" onChange={this.handleOptionChange} required />
+                        <textarea type="text" name="options" id="options" value={this.state.pollOptions} onChange={this.handleOptionChange} />
                     </label>
                     <br/>
                     <button type="submit" onClick={this.handleSubmit} id="newPollButton">Make my poll!</button>
