@@ -1,10 +1,20 @@
 import React from 'react';
 
 var NewPoll = React.createClass({
+    setInitialState: function(){
+        return {
+            pollTitle: "",
+            pollOptions: ""
+        };    
+    },
+    handleTitleChange: function(event){
+        this.setState({pollTitle: event.target.value});    
+    },
+    handleOptionChange: function(){
+        this.setState({pollOptions: event.target.value});
+    },
     handleSubmit: function(event){
-        let title = event.target.title.value;
-        let options = event.target.options.value;
-        alert(options);
+        alert(this.state.pollOptions);
         event.preventDefault();
     },
     render: function(){
@@ -14,15 +24,15 @@ var NewPoll = React.createClass({
                 <form id="newPollForm" onSubmit={this.handleSubmit}>
                     <label className="formInputs">Title:
                         <br/>
-                        <input type="text" name="title" id="title" required />
+                        <input type="text" name="title" id="title" onChange={this.handleTitleChange} required />
                     </label>
                     <br/>
                     <label className="formInputs">Options (seperated by line):
                     <br/>
-                        <textarea type="text" name="options" id="options" form="newpoll" required />
+                        <textarea type="text" name="options" id="options" form="newpoll" onChange={this.handleOptionChange} required />
                     </label>
                     <br/>
-                    <button type="submit" id="newPollButton">Make my poll!</button>
+                    <button type="submit" onClick={this.handleSubmit} id="newPollButton">Make my poll!</button>
                 </form>
             </div>
         );

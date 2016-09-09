@@ -27396,10 +27396,20 @@
 	var NewPoll = _react2.default.createClass({
 	    displayName: "NewPoll",
 
+	    setInitialState: function setInitialState() {
+	        return {
+	            pollTitle: "",
+	            pollOptions: ""
+	        };
+	    },
+	    handleTitleChange: function handleTitleChange(event) {
+	        this.setState({ pollTitle: event.target.value });
+	    },
+	    handleOptionChange: function handleOptionChange() {
+	        this.setState({ pollOptions: event.target.value });
+	    },
 	    handleSubmit: function handleSubmit(event) {
-	        var title = event.target.title.value;
-	        var options = event.target.options.value;
-	        alert(options);
+	        alert(this.state.pollOptions);
 	        event.preventDefault();
 	    },
 	    render: function render() {
@@ -27419,7 +27429,7 @@
 	                    { className: "formInputs" },
 	                    "Title:",
 	                    _react2.default.createElement("br", null),
-	                    _react2.default.createElement("input", { type: "text", name: "title", id: "title", required: true })
+	                    _react2.default.createElement("input", { type: "text", name: "title", id: "title", onChange: this.handleTitleChange, required: true })
 	                ),
 	                _react2.default.createElement("br", null),
 	                _react2.default.createElement(
@@ -27427,12 +27437,12 @@
 	                    { className: "formInputs" },
 	                    "Options (seperated by line):",
 	                    _react2.default.createElement("br", null),
-	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", form: "newpoll", required: true })
+	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", form: "newpoll", onChange: this.handleOptionChange, required: true })
 	                ),
 	                _react2.default.createElement("br", null),
 	                _react2.default.createElement(
 	                    "button",
-	                    { type: "submit", id: "newPollButton" },
+	                    { type: "submit", onClick: this.handleSubmit, id: "newPollButton" },
 	                    "Make my poll!"
 	                )
 	            )
