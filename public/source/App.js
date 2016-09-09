@@ -4,6 +4,7 @@ import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import Nav from './Nav.js';
 import NewPoll from './NewPoll.js';
 import Polls from './Polls.js';
+import MyPolls from './MyPolls.js';
 
 
  
@@ -26,6 +27,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={Polls}/>
       <Route path="newpoll" component={NewPoll} />
+      <Route path="mypolls" component={MyPolls} />
     </Route>
   </Router>
 ), document.getElementById('app'));
