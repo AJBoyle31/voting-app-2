@@ -68,6 +68,10 @@
 
 	var _Polls2 = _interopRequireDefault(_Polls);
 
+	var _MyPolls = __webpack_require__(240);
+
+	var _MyPolls2 = _interopRequireDefault(_MyPolls);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
@@ -91,7 +95,8 @@
 	    _reactRouter.Route,
 	    { path: '/', component: App },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Polls2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'newpoll', component: _NewPoll2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'newpoll', component: _NewPoll2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'mypolls', component: _MyPolls2.default })
 	  )
 	), document.getElementById('app'));
 
@@ -27402,10 +27407,13 @@
 	            pollOptions: ""
 	        };
 	    },
+	    componentWillMount: function componentWillMount() {
+	        this.setState({ pollOptions: "" });
+	    },
 	    handleTitleChange: function handleTitleChange(event) {
 	        this.setState({ pollTitle: event.target.value });
 	    },
-	    handleOptionChange: function handleOptionChange() {
+	    handleOptionChange: function handleOptionChange(event) {
 	        this.setState({ pollOptions: event.target.value });
 	    },
 	    handleSubmit: function handleSubmit(event) {
@@ -27437,7 +27445,7 @@
 	                    { className: "formInputs" },
 	                    "Options (seperated by line):",
 	                    _react2.default.createElement("br", null),
-	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", form: "newpoll", onChange: this.handleOptionChange, required: true })
+	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", value: this.state.pollOptions, onChange: this.handleOptionChange })
 	                ),
 	                _react2.default.createElement("br", null),
 	                _react2.default.createElement(
@@ -27451,6 +27459,36 @@
 	});
 
 	exports.default = NewPoll;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var MyPolls = _react2.default.createClass({
+	    displayName: "MyPolls",
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            "h1",
+	            { id: "test" },
+	            "TESTING"
+	        );
+	    }
+	});
+
+	exports.default = MyPolls;
 
 /***/ }
 /******/ ]);
