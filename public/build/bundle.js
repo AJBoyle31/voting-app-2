@@ -27417,7 +27417,19 @@
 	        this.setState({ pollOptions: event.target.value });
 	    },
 	    handleSubmit: function handleSubmit(event) {
-	        alert(this.state.pollOptions);
+	        var title = this.state.pollTitle;
+	        var options = this.state.pollOptions.split("\n");
+	        options = options.filter(function (e) {
+	            return e === 0 || e;
+	        });
+	        if (!title) {
+	            alert("Please add a title");
+	        } else if (options.length < 2) {
+	            alert("Nope, try again " + options.length);
+	        } else {
+	            alert(options);
+	        }
+
 	        event.preventDefault();
 	    },
 	    render: function render() {
@@ -27445,7 +27457,7 @@
 	                    { className: "formInputs" },
 	                    "Options (seperated by line):",
 	                    _react2.default.createElement("br", null),
-	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", value: this.state.pollOptions, onChange: this.handleOptionChange })
+	                    _react2.default.createElement("textarea", { type: "text", name: "options", id: "options", rows: "8", value: this.state.pollOptions, onChange: this.handleOptionChange })
 	                ),
 	                _react2.default.createElement("br", null),
 	                _react2.default.createElement(
