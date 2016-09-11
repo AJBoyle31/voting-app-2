@@ -17,7 +17,23 @@ var NewPoll = React.createClass({
         this.setState({pollOptions: event.target.value});
     },
     handleSubmit: function(event){
-        alert(this.state.pollOptions);
+        let title = this.state.pollTitle;
+        let options = this.state.pollOptions.split("\n");
+        options = options.filter(function(e){return e === 0 || e});
+        if (!title){
+            alert("Please add a title");
+        } 
+        else if (options.length < 2) {
+            alert("There needs to be at least two options");
+        }
+        else {
+            let optionArray = options.map((option) => {
+                return (
+                    {"option": option, "votes": 0}
+                );
+            });
+        }
+        
         event.preventDefault();
     },
     render: function(){
@@ -32,7 +48,7 @@ var NewPoll = React.createClass({
                     <br/>
                     <label className="formInputs">Options (seperated by line):
                     <br/>
-                        <textarea type="text" name="options" id="options" value={this.state.pollOptions} onChange={this.handleOptionChange} />
+                        <textarea type="text" name="options" id="options" rows='8' value={this.state.pollOptions} onChange={this.handleOptionChange} />
                     </label>
                     <br/>
                     <button type="submit" onClick={this.handleSubmit} id="newPollButton">Make my poll!</button>
