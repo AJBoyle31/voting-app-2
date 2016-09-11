@@ -32,6 +32,8 @@ var NewPoll = React.createClass({
                     {"option": option, "votes": 0}
                 );
             });
+            
+            
         }
         
         event.preventDefault();
