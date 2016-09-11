@@ -3,3 +3,6 @@ appOverview.txt
 
 node_modules/
 .env
+
+
+mongouserpass.js
