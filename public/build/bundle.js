@@ -27273,7 +27273,7 @@
 
 	        if (this.state.votingPolls) {
 	            var pollsResult = this.state.votingPolls.map(function (poll) {
-	                return _react2.default.createElement(_Poll2.default, { pollname: poll.pollname, key: poll.id });
+	                return _react2.default.createElement(_Poll2.default, { pollData: poll, pollname: poll.pollname, key: poll.id });
 	            });
 	        }
 
@@ -27338,7 +27338,7 @@
 	});
 	var mypolls = [{
 	  "id": 1,
-	  "createdBy": "CThePants",
+	  "createdBy": "Jess",
 	  "pollname": "Animals",
 	  "options": [{
 	    "option": "Bird",
@@ -27425,9 +27425,11 @@
 	        if (!title) {
 	            alert("Please add a title");
 	        } else if (options.length < 2) {
-	            alert("Nope, try again " + options.length);
+	            alert("There needs to be at least two options");
 	        } else {
-	            alert(options);
+	            var optionArray = options.map(function (option) {
+	                return { "option": option, "votes": 0 };
+	            });
 	        }
 
 	        event.preventDefault();
@@ -27476,7 +27478,7 @@
 /* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -27486,16 +27488,47 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _pollsJSON = __webpack_require__(238);
+
+	var _pollsJSON2 = _interopRequireDefault(_pollsJSON);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var MyPolls = _react2.default.createClass({
-	    displayName: "MyPolls",
+	//assuming the user logged in is CThePants
 
+	var MyPolls = _react2.default.createClass({
+	    displayName: 'MyPolls',
+
+	    setInitialState: function setInitialState() {
+	        return {
+	            myPolls: []
+	        };
+	    },
+	    componentWillMount: function componentWillMount() {
+	        this.setState({ myPolls: _pollsJSON2.default });
+	    },
 	    render: function render() {
+
+	        if (this.state.myPolls) {
+	            var pollsResult = this.state.votingPolls.map(function (poll) {
+	                return _react2.default.createElement(Poll, { pollData: poll, pollname: poll.pollname, key: poll.id });
+	            });
+	        }
+
 	        return _react2.default.createElement(
-	            "h1",
-	            { id: "test" },
-	            "TESTING"
+	            'div',
+	            { id: 'polls' },
+	            _react2.default.createElement(
+	                'h2',
+	                { id: 'pageTitle' },
+	                'FCC Voting App'
+	            ),
+	            _react2.default.createElement(
+	                'h4',
+	                { id: 'pageDesc' },
+	                'Select a poll to see the results and vote!'
+	            ),
+	            pollsResult
 	        );
 	    }
 	});
