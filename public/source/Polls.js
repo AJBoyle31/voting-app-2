@@ -1,6 +1,11 @@
 import React from 'react';
 import Poll from './Poll.js';
-import mypolls from './pollsJSON.js';
+import 'whatwg-fetch';
+
+const API_URL = 'https://voting-app-2-ajboyle.c9users.io/pollsQuery/';
+const API_HEADERS = {
+    'Content-Type': 'application/json'
+};
 
 var Polls = React.createClass({
     setInitialState: function(){
@@ -9,7 +14,13 @@ var Polls = React.createClass({
         };
     },
     componentWillMount: function(){
-        this.setState({votingPolls: mypolls});
+        fetch(API_URL, {headers: API_HEADERS})
+        .then((response) => response.json())
+        .then((responseData) => {
+            this.setState({
+                votingPolls: responseData
+            });
+        });
     },
     render: function(){
         
@@ -17,7 +28,7 @@ var Polls = React.createClass({
             var pollsResult = this.state.votingPolls.map((poll) => {
                 return <Poll pollname={poll.pollname} key={poll.id} />;
             });
-        }
+        } 
        
         return (
             <div id="polls">

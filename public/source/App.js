@@ -5,6 +5,7 @@ import Nav from './Nav.js';
 import NewPoll from './NewPoll.js';
 import Polls from './Polls.js';
 import MyPolls from './MyPolls.js';
+import SelectedPoll from './SelectedPoll.js';
 
 
  
@@ -28,6 +29,7 @@ ReactDOM.render((
       <IndexRoute component={Polls}/>
       <Route path="newpoll" component={NewPoll} />
       <Route path="mypolls" component={MyPolls} />
+      <Route path="polls/:id" component={SelectedPoll} />
     </Route>
   </Router>
 ), document.getElementById('app'));

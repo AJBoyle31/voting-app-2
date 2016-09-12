@@ -1,4 +1,4 @@
-var mypolls = [
+[
   { 
     "id": 1,
     "createdBy": "CThePants",
@@ -57,5 +57,3 @@ var mypolls = [
     ]
   }
 ];
-
-export default mypolls;

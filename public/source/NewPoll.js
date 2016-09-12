@@ -1,6 +1,5 @@
 import React from 'react';
-import obtainUrl from './mongouserpass.js';
-var url = obtainUrl.getUrl();
+
 
 var NewPoll = React.createClass({
     setInitialState: function(){
