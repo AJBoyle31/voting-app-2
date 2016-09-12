@@ -1,7 +1,7 @@
 var mypolls = [
   { 
     "id": 1,
-    "createdBy": "CThePants",
+    "createdBy": "Jess",
     "pollname": "Animals",
     "options": [
       {
