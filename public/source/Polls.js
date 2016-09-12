@@ -15,7 +15,7 @@ var Polls = React.createClass({
         
         if (this.state.votingPolls){
             var pollsResult = this.state.votingPolls.map((poll) => {
-                return <Poll pollname={poll.pollname} key={poll.id} />;
+                return <Poll pollData={poll} pollname={poll.pollname} key={poll.id} />;
             });
         }
        
